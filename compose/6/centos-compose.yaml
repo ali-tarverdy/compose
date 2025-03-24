@@ -1,0 +1,21 @@
+services:
+  ubuntu:
+    container_name: centos
+    image: centos:latest
+    restart: always
+    command: ["ping","cloudflare"]
+    networks:
+      - nginx
+    volumes:
+      - test:/test
+    extra_hosts:
+      - "ubuntu=127.0.0.1"
+      - "cloudflare=1.1.1.1"
+
+networks:
+  nginx:
+    external: true
+
+volumes:
+  test:
+    external: true

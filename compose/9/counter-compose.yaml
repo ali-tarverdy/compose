@@ -1,0 +1,27 @@
+services:
+  coounter:
+    container_name: counter
+    image: counter:1.0
+    restart: always
+    networks:
+      - nginx
+    volumes:
+      - counter:/vol
+    command: ping -i 10 1.1.1.1
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+    hostname: counter
+    labels:
+      email: "lyasghrtarwrdy97@gmail.com"
+      name: "Ali Tarverdy"
+
+
+
+networks:
+  nginx:
+    external: true
+
+volumes:
+  counter:
+    external: true

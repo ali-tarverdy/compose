@@ -1,0 +1,21 @@
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    volumes:
+      - mysql:/var/lib/mysql/
+    networks:
+      - nginx
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+
+volumes:
+  mysql:
+    external: true
+
+networks:
+  nginx:
+    external: true

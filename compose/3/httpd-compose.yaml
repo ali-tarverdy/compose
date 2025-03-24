@@ -1,0 +1,23 @@
+services:
+  httpd:
+    image: httpd:latest
+    container_name: httpd
+    restart: always
+    ports:
+     - 3100:80
+     - 3300:80
+    volumes:
+     - httpd:/usr/local/apache2/htdocs/
+    networks:
+      - nginx
+      - alpine
+
+networks:
+  nginx:
+    external: true
+  alpine:
+    external: true
+
+volumes:
+  httpd:
+    driver: local

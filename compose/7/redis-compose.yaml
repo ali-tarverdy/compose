@@ -1,0 +1,22 @@
+services:
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
+    volumes:
+      - test:/test
+    networks:
+        nginx:
+         ipv4_address: "192.168.1.133/24" 
+
+
+networks:
+  nginx:
+    external: true
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.1.133/24"
+volumes:
+  test:
+    external: true

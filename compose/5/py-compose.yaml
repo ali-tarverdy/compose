@@ -1,0 +1,18 @@
+services:
+  py:
+    image: py:1.0
+    build: .
+    container_name: first-py
+    restart: always
+    networks:
+      - nginx
+    volumes:
+      - test:/code
+
+networks:
+  nginx:
+    external: true
+      
+volumes:
+  test:
+    external: true
